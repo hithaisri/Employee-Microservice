@@ -25,7 +25,7 @@ public class EmployeeController {
 	@GetMapping("/{eid}")
 	public Employee getEmployee(@PathVariable("eid") Long id) {
 		Employee employee= employeeService.getEmployee(id);
-		List records = this.restTemplate.getForObject("http://localhost:9090/record/emp/"+id, List.class);
+		List records = this.restTemplate.getForObject("http://record-service/record/emp/"+id, List.class);
 		employee.setRecords(records);
 		return employee;
 	}
